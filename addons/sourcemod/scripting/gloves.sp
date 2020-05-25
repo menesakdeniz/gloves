@@ -18,6 +18,7 @@
 #include <sourcemod>
 #include <sdktools>
 #include <cstrike>
+#include <cscenter>
 
 #pragma semicolon 1
 #pragma newdecls required
@@ -33,10 +34,10 @@
 public Plugin myinfo = 
 {
 	name = "Gloves",
-	author = "kgns | oyunhost.net",
+	author = "kgns",
 	description = "CS:GO Gloves Management",
 	version = "1.0.4",
-	url = "https://www.oyunhost.net"
+	url = "https://CS.Center"
 };
 
 public void OnPluginStart()
@@ -45,12 +46,13 @@ public void OnPluginStart()
 	
 	g_Cvar_DBConnection = CreateConVar("sm_gloves_db_connection", "storage-local", "Database connection name in databases.cfg to use");
 	g_Cvar_TablePrefix = CreateConVar("sm_gloves_table_prefix", "", "Prefix for database table (example: 'xyz_')");
-	g_Cvar_ChatPrefix = CreateConVar("sm_gloves_chat_prefix", "[oyunhost.net]", "Prefix for chat messages");
+	//g_Cvar_ChatPrefix = CreateConVar("sm_gloves_chat_prefix", "[oyunhost.net]", "Prefix for chat messages");
 	g_Cvar_EnableFloat = CreateConVar("sm_gloves_enable_float", "1", "Enable/Disable gloves float options");
 	g_Cvar_FloatIncrementSize = CreateConVar("sm_gloves_float_increment_size", "0.2", "Increase/Decrease by value for gloves float");
 	g_Cvar_EnableWorldModel = CreateConVar("sm_gloves_enable_world_model", "1", "Enable/Disable gloves to be seen by other living players");
+	SetTag();
 	
-	AutoExecConfig(true, "gloves");
+	//AutoExecConfig(true, "gloves");
 	
 	RegConsoleCmd("sm_gloves", CommandGlove);
 	RegConsoleCmd("sm_glove", CommandGlove);
@@ -66,6 +68,10 @@ public void OnPluginStart()
 
 public void OnConfigsExecuted()
 {
+	CreateTimer(1.0,OnConfigsExecutedLateLoad);
+}
+public Action OnConfigsExecutedLateLoad(Handle timer, any data){
+	GetTag();
 	GetConVarString(g_Cvar_DBConnection, g_DBConnection, sizeof(g_DBConnection));
 	GetConVarString(g_Cvar_TablePrefix, g_TablePrefix, sizeof(g_TablePrefix));
 	
@@ -94,6 +100,7 @@ public Action CommandGlove(int client, int args)
 {
 	if (IsValidClient(client))
 	{
+		GetTag();
 		CreateMainMenu(client).Display(client, MENU_TIME_FOREVER);
 	}
 	return Plugin_Handled;

@@ -20,8 +20,21 @@ public void Event_PlayerSpawn(Event event, const char[] name, bool dontBroadcast
 	int clientIndex = GetClientOfUserId(event.GetInt("userid"));
 	if(IsValidClient(clientIndex))
 	{
+		if(ZombiMod)
+			CreateTimer((1.5+0.2),GiveGloves,GetClientSerial(clientIndex));
+		/*else
+			CreateTimer(0.2,GiveGloves,GetClientSerial(clientIndex));*/
 		GivePlayerGloves(clientIndex);
 	}
+}
+
+public Action GiveGloves(Handle timer, any data){
+	
+	int clientIndex = GetClientFromSerial(data);
+	if (clientIndex == 0)
+		return Plugin_Handled;
+	GivePlayerGloves(clientIndex);
+	return Plugin_Continue;
 }
 
 public Action ChatListener(int client, const char[] command, int args)

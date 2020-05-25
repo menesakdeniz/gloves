@@ -65,7 +65,13 @@ public void OnPluginStart()
 	AddCommandListener(ChatListener, "say2");
 	AddCommandListener(ChatListener, "say_team");
 }
-
+public void OnMapStart(){
+	char mapName[64];
+	GetCurrentMap(mapName, sizeof(mapName));
+	ZombiMod = false;
+	if(((StrContains(mapName, "ze_", false) != -1) || (StrContains(mapName, "zm_", false)!= -1)))
+		ZombiMod = true;	
+}
 public void OnConfigsExecuted()
 {
 	CreateTimer(1.0,OnConfigsExecutedLateLoad);
@@ -88,7 +94,7 @@ public Action OnConfigsExecutedLateLoad(Handle timer, any data){
 	
 	strcopy(g_DBConnectionOld, sizeof(g_DBConnectionOld), g_DBConnection);
 	
-	g_Cvar_ChatPrefix.GetString(g_ChatPrefix, sizeof(g_ChatPrefix));
+	//g_Cvar_ChatPrefix.GetString(g_ChatPrefix, sizeof(g_ChatPrefix));
 	g_iEnableFloat = g_Cvar_EnableFloat.IntValue;
 	g_fFloatIncrementSize = g_Cvar_FloatIncrementSize.FloatValue;
 	g_iFloatIncrementPercentage = RoundFloat(g_fFloatIncrementSize * 100.0);

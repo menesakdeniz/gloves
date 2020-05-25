@@ -28,8 +28,8 @@ char g_DBConnectionOld[32];
 ConVar g_Cvar_TablePrefix;
 char g_TablePrefix[10];
 
-ConVar g_Cvar_ChatPrefix;
-char g_ChatPrefix[32];
+//ConVar g_Cvar_ChatPrefix;
+//char g_ChatPrefix[32];
 
 ConVar g_Cvar_FloatIncrementSize;
 float g_fFloatIncrementSize;
@@ -56,3 +56,5 @@ Menu menuGloves[MAX_LANG][4][8];
 
 StringMap g_smGlovesGroupIndex;
 StringMap g_smLanguageIndex;
+
+bool ZombiMod=false;

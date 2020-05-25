@@ -21,6 +21,7 @@ public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max
 	CreateNative("Gloves_RegisterCustomArms", Native_RegisterCustomArms);
 	CreateNative("Gloves_SetArmsModel", Native_SetArmsModel);
 	CreateNative("Gloves_GetArmsModel", Native_GetArmsModel);
+	RegPluginLibrary("gloves");
 	return APLRes_Success;
 }
 

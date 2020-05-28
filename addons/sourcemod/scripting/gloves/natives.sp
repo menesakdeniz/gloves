@@ -44,6 +44,7 @@ public int Native_SetArmsModel(Handle plugin, int numParams)
 	int clientIndex = GetNativeCell(1);
 	int playerTeam = GetClientTeam(clientIndex);
 	GetNativeString(2, g_CustomArms[clientIndex][playerTeam], 256);
+	PrintToConsole(clientIndex,"[DEBUG][GLOVES] g_iGloves[clientIndex][playerTeam] : %d",g_iGloves[clientIndex][playerTeam]);
 	if(g_iGloves[clientIndex][playerTeam] == 0)
 	{
 		SetEntPropString(clientIndex, Prop_Send, "m_szArmsModel", g_CustomArms[clientIndex][playerTeam]);

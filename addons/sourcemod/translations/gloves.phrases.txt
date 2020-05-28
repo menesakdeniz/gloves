@@ -3,37 +3,46 @@
 	"GloveMenuTitle"
 	{
 		"en"	"Gloves Menu"
+		"tr"	"Eldiven Menüsü"
 	}
 	"CT"
 	{
 		"en"	"Counter-Terrorist"
+		"tr"	"Anti-Terörist"
 	}
 	"T"
 	{
 		"en"	"Terrorist"
+		"tr"	"Terörist"
 	}
 	"Increase"
 	{
 		"en"	"Increase by %d%%"
+		"tr"	"%d%% Yükselt"
 	}
 	"Decrease"
 	{
 		"en"	"Decrease by %d%%"
+		"tr"	"%d%% Düşür"
 	}
 	"ChooseLanguage"
 	{
 		"en"	"Select language for glove names:"
+		"tr"	"Eldiven isimleri için dil seçin:"
 	}
 	"DefaultGloves"
 	{
 		"en"	"Default"
+		"tr"	"Normal (Skinsiz)"
 	}
 	"RandomGloves"
 	{
 		"en"	"Random"
+		"tr"	"Rastgele"
 	}
 	"SetFloat"
 	{
 		"en"	"Gloves Condition: "
+		"tr"	"Eldiven Yenilik Durumu: "
 	}
 }
